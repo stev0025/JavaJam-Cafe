@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> JavaJam - Menu </title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="site.css">
+
+	<style>
+		tr:nth-of-type(odd) {background-color:#CDAB61;}
+		#td_text {
+					padding : 5px 5px 5px 5px;
+					text-align: left;
+		}
+		td 	{
+				padding : 0;
+				text-align: center;
+			}
+		th {padding : 5px 5px 5px 5px;}
+		.price {
+				padding: 5px 5px 5px 5px;
+				text-align: center;
+				}
+	</style>
+		<script type="text/javascript" src="menu_calculation.js"></script>
+
+	
+</head>
+<body>
+
+<div id="wrapper">
+	<header>
+	</header>
+	<div id="leftcolumn">
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="menu.html">Menu</a>
+			<a href="music.html">Music</a>
+			<a href="jobs.html">Jobs</a>
+		</nav>
+	</div>
+	<div id="rightcolumn">
+		<h1> Coffee at JavaJam </h1>
+		<table width="600px" align="center" border="1">
+			<tr>
+				<th colspan="2"></th>
+				<th>Q</th>
+				<th width="70px">Price</th>
+			</tr>
+			<tr>
+				<td id="td_text"> Just Java </td>
+				<td id="td_text"> Regular house blend, decaffeinated coffee, or flavor of the day. <br>
+						Endless Cup $2.00 </td>
+				<td><input type="text" id="Java_Q" size="1" maxlength="2"></td>
+				<td class="price" id="Java_subtotal"></td>
+			</tr>
+			<tr>
+				<td id="td_text"> Cafe au Lait </td>
+				<td id="td_text"> House blended coffee infused into a smooth steamed milk. <br>
+						<form action="show_get.php" method="get" id="Cafe_choice"> 
+						   <input type="radio" name="Cafe_au" id="Cafe_single" value="2.00" checked> Single $2.00
+						   <input type="radio" name="Cafe_au" id="Cafe_double" value="3.00"> Double $3.00<br>
+						</form>
+				</td>
+				<td><input type="text" id="Cafe_Q" size="1" maxlength="2"></td>
+				<td class="price" id="Cafe_subtotal"></td>
+			</tr>
+			<tr>
+				<td id="td_text"> Iced Cappuccino </td>
+				<td id="td_text"> Sweetened espresso blended with icy-cold milk and served in a chilled glass. <br>
+						<form action="show_get.php" method="get" id="Iced_choice"> 
+						   <input type="radio" name="Iced" id="Iced_single" value="4.75" checked> Single $4.75
+						   <input type="radio" name="Iced" id="Iced_double" value="5.75"> Double $5.75<br>
+						</form>
+				</td>
+				<td><input type="text" id="Iced_Q" size="1" maxlength="2"></td>
+				<td class ="price" id="Iced_subtotal"></td>
+			</tr>
+			<tr>
+				<th colspan="2"></th>
+				<th text-size><big>Total</big></th>
+				<th class="price" id="maintotal"></th>
+			</tr>
+		</table>
+	
+
+	
+	
+	
+	
+	
+	
+	
+	</div>
+	<footer>
+	<p> Copyright &copy; 2014 JavaJam Coffee House<br>
+	<a href="mailto:stevenloekita@harsono.com">stevenloekita@harsono.com </a></p>
+	</footer>
+	
+	
+</div>	
+
+</body>
+</html>
