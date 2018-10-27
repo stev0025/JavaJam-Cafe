@@ -141,7 +141,8 @@ $priceIcedDouble = stripslashes($row['prices']);
 		</nav>
 	</div>
 	<div id="rightcolumn">
-		<h1> Click to update product prices: </h1>
+		<h1> Fill to update product prices: </h1>
+		<p>*a single and double of the same products cannot have same price</p>
 		<form action="price_update_cont.php" method="post">
 		<table width="80%">
 			<tr>

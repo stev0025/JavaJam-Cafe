@@ -42,7 +42,7 @@ $priceIcedDouble = stripslashes($row['prices']);
 ?>
 
 <?php
-/*
+
 // order the drinks!!
 
 $Java_Q = $_POST['Java_Q'];
@@ -115,7 +115,6 @@ if ($Iced_Q != NULL) {
 		
 	}
 }
-*/
 ?>
 
 <!DOCTYPE html>
