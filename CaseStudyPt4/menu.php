@@ -1,4 +1,7 @@
 <?php
+
+//get prices
+
 $servername = "localhost";
 $username = "f34ee";
 $password = "f34ee";
@@ -38,6 +41,57 @@ $priceIcedDouble = stripslashes($row['prices']);
 
 ?>
 
+<?php
+
+// order the drinks!!
+
+$Java_Q = $_POST['Java_Q'];
+$Cafe_Q = $_POST['Cafe_Q'];
+$Iced_Q = $_POST['Iced_Q'];
+$Cafe_au = $_POST['Cafe_au'];
+$Iced = $_POST['Iced'];
+
+if ($Java_Q != NULL) {
+		if (!get_magic_quotes_gpc()){
+		$Java_Q = addslashes($Java_Q);
+		}	
+	$query = "SELECT * FROM `JavaJam` WHERE coffee_type='just_java'";
+	$result = $conn->query($query);
+	$row = $result->fetch_assoc();
+	$old_Q = stripslashes($row['quantity']);
+	$new_Q = $old_Q+$Java_Q;
+	$query = "UPDATE JavaJam SET quantity = '".$new_Q."' WHERE coffee_type='just_java'";
+	$result = $conn->query($query);	
+}
+/*
+if ($Cafe_Q != NULL) {
+		if (!get_magic_quotes_gpc()){
+		$Cafe_Q = addslashes($Cafe_Q);
+		}
+	$selected_radio = $Cafe_au;
+	if ($selected_radio ==  
+
+
+		
+	$query = "SELECT * FROM `JavaJam` WHERE coffee_type='just_java'";
+	$result = $conn->query($query);
+	$row = $result->fetch_assoc();
+	$old_Q = stripslashes($row['quantity']);
+	$new_Q = $old_Q+$Java_Q;
+	$query = "UPDATE JavaJam SET quantity = '".$new_Q."' WHERE coffee_type='just_java'";
+	$result = $conn->query($query);	
+}
+*/
+
+
+
+
+echo "NAHAHAHA<br>";
+echo "You have selected : $Cafe_au  TEHE<br>";
+echo "You have selected : '".$Iced."'  TEHE<br>";
+echo "NAHAHAHA<br>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +114,14 @@ $priceIcedDouble = stripslashes($row['prices']);
 				padding: 5px 5px 5px 5px;
 				text-align: center;
 				}
+
+		.order_btn {
+			float: right;
+			margin-right: 16.5%;
+	
+		}
+		
+		</style>
 	</style>
 		<script type="text/javascript" src="menu_calculation.js"></script>
 	<script>
@@ -67,7 +129,6 @@ function calculatePriceJava () {
 	var Q = document.getElementById("Java_Q");
 	
 	var pos = Q.value.search(/^[\d\s]*$/);
-	
 	if (pos == -1) {
 		document.getElementById("Java_subtotal").innerHTML = "Error";
 		return;
@@ -87,6 +148,7 @@ function calculatePriceJava () {
 
 <div id="wrapper">
 	<header>
+
 	</header>
 	<div id="leftcolumn">
 		<nav>
@@ -100,49 +162,55 @@ function calculatePriceJava () {
 	</div>
 	<div id="rightcolumn">
 		<h1> Coffee at JavaJam </h1>
-		<table width="600px" align="center" border="1">
-			<tr>
-				<th colspan="2"></th>
-				<th>Q</th>
-				<th width="70px">Price</th>
-			</tr>
-			<tr>
-				<td id="td_text"> Just Java </td>
-				<td id="td_text"> Regular house blend, decaffeinated coffee, or flavor of the day. <br>
-						Endless Cup $<?php echo number_format($priceJava,2);?> </td>
-				<td><input type="text" id="Java_Q" size="1" maxlength="2"></td>
-				<td class="price" id="Java_subtotal"></td>
-			</tr>
-			<tr>
-				<td id="td_text"> Cafe au Lait </td>
-				<td id="td_text"> House blended coffee infused into a smooth steamed milk. <br>
-						<form action="show_get.php" method="get" id="Cafe_choice"> 
-						   <input type="radio" name="Cafe_au" id="Cafe_single" value="<?php echo number_format($priceCafeSingle,2);?>" checked> Single $<?php echo number_format($priceCafeSingle,2);?>
-						   <input type="radio" name="Cafe_au" id="Cafe_double" value="<?php echo number_format($priceCafeDouble,2);?>"> Double $<?php echo number_format($priceCafeDouble,2);?><br>
-						</form>
-				</td>
-				<td><input type="text" id="Cafe_Q" size="1" maxlength="2"></td>
-				<td class="price" id="Cafe_subtotal"></td>
-			</tr>
-			<tr>
-				<td id="td_text"> Iced Cappuccino </td>
-				<td id="td_text"> Sweetened espresso blended with icy-cold milk and served in a chilled glass. <br>
-						<form action="show_get.php" method="get" id="Iced_choice"> 
-						   <input type="radio" name="Iced" id="Iced_single" value="<?php echo number_format($priceIcedSingle,2);?>" checked> Single $<?php echo number_format($priceIcedSingle,2);?>
-						   <input type="radio" name="Iced" id="Iced_double" value="<?php echo number_format($priceIcedDouble,2);?>"> Double $<?php echo number_format($priceIcedDouble,2);?><br>
-						</form>
-				</td>
-				<td><input type="text" id="Iced_Q" size="1" maxlength="2"></td>
-				<td class ="price" id="Iced_subtotal"></td>
-			</tr>
-			<tr>
-				<th colspan="2"></th>
-				<th><big>Total</big></th>
-				<th class="price" id="maintotal"></th>
-			</tr>
-		</table>
-		<br>
-		<input style="float:right; margin-right: 30px" type="submit" value="Order Now!">
+		
+		<form action="menu.php" method="post">
+		
+		
+			<table width="600px" align="center" border="1">
+				<tr>
+					<th colspan="2"></th>
+					<th>Q</th>
+					<th width="70px">Price</th>
+				</tr>
+				<tr>
+					<td id="td_text"> Just Java </td>
+					<td id="td_text"> Regular house blend, decaffeinated coffee, or flavor of the day. <br>
+							Endless Cup $<?php echo number_format($priceJava,2);?> </td>
+					<td><input type="text" name="Java_Q" id="Java_Q" size="1" maxlength="2"></td>
+					<td class="price" id="Java_subtotal"></td>
+				</tr>
+				<tr>
+					<td id="td_text"> Cafe au Lait </td>
+					<td id="td_text"> House blended coffee infused into a smooth steamed milk. <br>
+							 
+							   <input type="radio" name="Cafe_au" id="Cafe_single" value="<?php echo number_format($priceCafeSingle,2);?>" checked> Single $<?php echo number_format($priceCafeSingle,2);?>
+							   <input type="radio" name="Cafe_au" id="Cafe_double" value="<?php echo number_format($priceCafeDouble,2);?>"> Double $<?php echo number_format($priceCafeDouble,2);?><br>
+							
+					</td>
+					<td><input type="text" name="Cafe_Q" id="Cafe_Q" size="1" maxlength="2"></td>
+					<td class="price" id="Cafe_subtotal"></td>
+				</tr>
+				<tr>
+					<td id="td_text"> Iced Cappuccino </td>
+					<td id="td_text"> Sweetened espresso blended with icy-cold milk and served in a chilled glass. <br>
+							
+							   <input type="radio" name="Iced" id="Iced_single" value="<?php echo number_format($priceIcedSingle,2);?>" checked> Single $<?php echo number_format($priceIcedSingle,2);?>
+							   <input type="radio" name="Iced" id="Iced_double" value="<?php echo number_format($priceIcedDouble,2);?>"> Double $<?php echo number_format($priceIcedDouble,2);?><br>
+							
+					</td>
+					<td><input type="text" name="Iced_Q" id="Iced_Q" size="1" maxlength="2"></td>
+					<td class ="price" id="Iced_subtotal"></td>
+				</tr>
+				<tr>
+					<th colspan="2"></th>
+					<th><big>Total</big></th>
+					<th class="price" id="maintotal"></th>
+				</tr>
+			</table>
+			<br>
+			
+			<input class="order_btn"  type="submit" value="Order Now!">
+		</form>
 		<br>
 	
 

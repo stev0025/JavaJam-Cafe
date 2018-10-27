@@ -9,9 +9,16 @@
 		.btn {
 			width: 30px;
 			height: 30px;
-			background: none;
+			background: transparent;
 			border: 2px solid #4caf50;
 			color: white;
+		}
+		.btn:hover {
+			box-shadow: 5px 5px 1px grey;
+		}
+		.btn:active {
+			box-shadow: 5px 5px 1px grey;
+			background-color: #4caf50;
 		}
 	</style>
 	
@@ -36,11 +43,11 @@
 		<h1> Click to generate daily sales report: </h1>
 		<table>
 			<tr>
-				<td> <input class="btn" type=button name="rpt" id="by_product"> </td>
+				<td> <form action="report_totalsales.php"><input class="btn" type="submit" value=""></form></td>
 				<td> Total dollar sales by products </td>
 			</tr>
 			<tr>
-				<td> <input class="btn" type=button name="rpt" id="by_category"> </td>
+				<td> <form action="report_salesQ.php"><input class="btn" type="submit" value=""></form></td>
 				<td> Sales quantities by product categories </td>
 			</tr>
 		</table>

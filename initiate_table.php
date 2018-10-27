@@ -27,7 +27,7 @@ PRIMARY KEY - Used to uniquely identify the rows in a table. The column with PRI
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "Table MyGuests created successfully <br>";
+    echo "Table MyGuests created successfully";
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }

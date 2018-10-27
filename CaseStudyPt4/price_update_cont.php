@@ -1,5 +1,5 @@
 <?php
-/*
+
 $servername = "localhost";
 $username = "f34ee";
 $password = "f34ee";
@@ -57,7 +57,7 @@ if ($IcedDoubleNew != NULL) {
 	$query = "UPDATE JavaJam SET prices = '".$IcedDoubleNew."' WHERE coffee_type='iced_double'";
 	$result = $conn->query($query);		
 }
-*/
+
 ?>
 
 <?php

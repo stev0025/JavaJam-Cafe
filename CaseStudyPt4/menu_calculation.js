@@ -3,9 +3,11 @@
 function calculatePriceCafe () {
 	var Q = document.getElementById("Cafe_Q");
 	var pos = Q.value.search(/^[\d\s]*$/);
-	
+
 	if (pos == -1) {
 		document.getElementById("Cafe_subtotal").innerHTML = "Error";
+
+
 		return;
 	}
 	var radios = document.getElementsByName("Cafe_au");
@@ -27,7 +29,7 @@ function calculatePriceCafe () {
 function calculatePriceIced () {
 	var Q = document.getElementById("Iced_Q");
 	var pos = Q.value.search(/^[\d\s]*$/);
-	
+
 	if (pos == -1) {
 		document.getElementById("Iced_subtotal").innerHTML = "Error";
 		return;
@@ -56,7 +58,6 @@ function calculateTotal() {
 }
 
 function calculatePrice() {
-
 	calculatePriceJava();
 	calculatePriceCafe();
 	calculatePriceIced();
@@ -69,7 +70,6 @@ function init() {
 }
 
 var myVar;
-var error = 0;
 var priceJava;
 var priceCafe;
 var priceIced;
